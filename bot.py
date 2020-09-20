@@ -10,9 +10,9 @@ import random
 
 os.environ['DISPLAY'] = ':0' #linux req'd
 
-textfiles = ['interests.txt'] #Defining a text file here ensures it's existence when the bot runs. 
+textfiles = ['interests.txt','queue/userqueue.txt'] #Defining a text file here ensures it's existence when the bot runs. 
 
-pfix = '!' #Changeable prefix for calling the bot.
+pfix = 'r!' #Changeable prefix for calling the bot.
 
 startup_extensions = ['blankcog','queueup'] #If you add a new module (python file) then add it's name here (without extension) and the bot will import it.
 
@@ -100,6 +100,8 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     log_channel = bot.get_channel(bot_config.DM_Channel) #This channel ID logs DMs. Just for consistency.
+    
+    
     
     if isinstance(message.channel, discord.abc.PrivateChannel): #Forward DMs to a DM Logger channel.
         if message.author.id != 0: 
