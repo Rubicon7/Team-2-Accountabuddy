@@ -14,7 +14,7 @@ textfiles = ['interests.txt'] #Defining a text file here ensures it's existence 
 
 pfix = '!' #Changeable prefix for calling the bot.
 
-startup_extensions = ['blankcog','queue'] #If you add a new module (python file) then add it's name here (without extension) and the bot will import it.
+startup_extensions = ['blankcog','queueup'] #If you add a new module (python file) then add it's name here (without extension) and the bot will import it.
 
 def makeList(path):
     """Return a list of ints from this file."""
@@ -77,7 +77,7 @@ async def on_ready():
     print(bot.user.id)
     print('------')
     await bot.change_presence(activity=discord.Game(name=(pfix+'help')))
-    bot.remove_command('help')
+    #bot.remove_command('help')
     if __name__ == '__main__':
         for extension in startup_extensions:
             try:
@@ -100,8 +100,6 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     log_channel = bot.get_channel(bot_config.DM_Channel) #This channel ID logs DMs. Just for consistency.
-    
-    
     
     if isinstance(message.channel, discord.abc.PrivateChannel): #Forward DMs to a DM Logger channel.
         if message.author.id != 0: 
